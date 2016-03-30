@@ -1,0 +1,53 @@
+---
+specversion: 0.0.2
+id: cassandra-atomicapp
+
+metadata:
+  name: Cassandra App
+  appversion: 0.0.1
+  description: Cassandra Atomic App
+
+graph:
+  - name: cassandra-app
+    params:
+      - name: image
+        description: The cassandra image
+      - name: hostport
+        description: The port where cassandra runs
+        default: 7000
+      - name: listen_address
+        description: This variable is for controlling which IP address to listen for incoming connections on.
+        default: auto
+      - name: broadcast_address
+        description: This variable is for controlling which IP address to advertise to other nodes.
+        default: auto
+      - name: rpc_address
+        description: This variable is for controlling which address to bind the thrift rpc server to.
+        default: 0.0.0.0
+      - name: start_rpc
+        description: This variable is for controlling if the thrift rpc server is started.
+        default: ""
+      - name: seeds
+        description: This variable is the comma-separated list of IP addresses used by gossip for bootstrapping new nodes joining a cluster.
+        default: ""
+      - name: cluster_name
+        description: This variable sets the name of the cluster and must be the same for all nodes in the cluster.
+        default: ""
+      - name: num_tokens
+        description: This variable sets number of tokens for this node.
+        default: ""
+      - name: dc
+        description: This variable sets the datacenter name of this node.
+        default: ""
+      - name: rack
+        description: This variable sets the rack name of this node.
+        default: ""
+      - name: endpoint_snitch
+        description: This variable sets the snitch implementation this node will use.
+        default: ""
+    artifacts:
+      docker:
+        - file://artifacts/docker/cassandra_run
+      kubernetes:
+        - file://artifacts/kubernetes/cassandra-rc.yaml
+        - file://artifacts/kubernetes/cassandra-svc.yaml

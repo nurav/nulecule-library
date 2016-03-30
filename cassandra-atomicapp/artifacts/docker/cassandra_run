@@ -1,0 +1,12 @@
+docker run -d -p 7000:$hostport
+    -e CASSANDRA_LISTEN_ADDRESS=$listen_address
+    -e CASSANDRA_BROADCAST_ADDRESS=$broadcast_address
+    -e CASSANDRA_RPC_ADDRESS=$rpc_address
+    -e CASSANDRA_START_RPC=$start_rpc
+    -e CASSANDRA_SEEDS=$seeds
+    -e CASSANDRA_CLUSTER_NAME=$cluster_name
+    -e CASSANDRA_NUM_TOKENS=$num_tokens
+    -e CASSANDRA_DC=$dc
+    -e CASSANDRA_RACK=$rack
+    -e CASSANDRA_ENDPOINT_SNITCH=$endpoint_snitch
+    $image

@@ -1,0 +1,16 @@
+[cassandra-app]
+num_tokens = None
+endpoint_snitch = ""
+broadcast_address = auto
+start_rpc = ""
+image = ""
+hostport = 7000
+dc = ""
+cluster_name = ""
+seeds = ""
+rpc_address = 0.0.0.0
+listen_address = auto
+rack = ""
+[general]
+namespace = default
+provider = docker

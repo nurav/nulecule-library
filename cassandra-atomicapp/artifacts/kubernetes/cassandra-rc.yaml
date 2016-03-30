@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: cassandra
+  labels:
+    name: cassandra
+spec:
+  replicas: 1
+  selector:
+    name: cassandra
+  template:
+    metadata:
+      labels:
+        name: cassandra
+    spec:
+      containers:
+        - name: cassandra
+          image: $image
+          ports:
+            - name: cassandra-server
+              containerPort: $hostport
+          env:
+            - name: CASSANDRA_LISTEN_ADDRESS
+              value: $listen_address
+            - name: CASSANDRA_BROADCAST_ADDRESS
+              value: $broadcast_address
+            - name: CASSANDRA_RPC_ADDRESS
+              value: $rpc_address
+            - name: CASSANDRA_START_RPC
+              value: $start_rpc
+            - name: CASSANDRA_SEEDS
+              value: $seeds
+            - name: CASSANDRA_CLUSTER_NAME
+              value: $cluster_name
+            - name: CASSANDRA_NUM_TOKENS
+              value: $num_tokens
+            - name: CASSANDRA_DC
+              value: $dc
+            - name: CASSANDRA_RACK
+              value: $rack
+            - name: CASSANDRA_ENDPOINT_SNITCH
+              value: $endpoint_snitch
